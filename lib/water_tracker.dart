@@ -9,23 +9,29 @@ class WaterTracker extends StatefulWidget {
 }
 
 class _WaterTrackerState extends State<WaterTracker> {
-  int _inTake = 0;
-  final int _goal = 2000;
-  List<int> history = [];
+  int _inTake = 0; // it is not final so its value is changeable
+   final int _goal = 2000;  // final because in will not changed in future final fixed it
+  List<int> history = [];  // list in and value is changeable
+
+
+  // function 1: Add function
 
   void _addWater(int amount) {
     setState(() {
       if (_inTake < _goal) {
-        _inTake = (_inTake + amount).clamp(0, _goal);
-        history.add(amount);
+        _inTake = (_inTake + amount).clamp(0, _goal);  // condition==1  ; clamp range fixed kore ar besi ba kom hobena
+        history.add(amount);   // condition==2 ;
       }
     });
   }
 
+  // function 2: reset function
+
   void resetWater() {
     setState(() {
-      _inTake = 0;
+      _inTake = 0; // initial value
       history.clear();
+
     });
   }
 
@@ -68,7 +74,7 @@ class _WaterTrackerState extends State<WaterTracker> {
                 children: [
                   Text(
                     "Today's Intake",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 18, color: Colors.grey,fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: 10),
                   Text(
@@ -115,13 +121,16 @@ class _WaterTrackerState extends State<WaterTracker> {
     );
   }
 
+
+  // function 3: history showing function
+
   Future<void> showWaterHistory() {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: Colors.blue.shade100,
-          title: Text("Water Intake History"),
+          title: Text("Water Intake History",style: TextStyle(color: Colors.black),),
           content: Container(
             width: double.maxFinite,
             child: history.isEmpty
@@ -137,7 +146,7 @@ class _WaterTrackerState extends State<WaterTracker> {
               ),
             )
                 : ListView.builder(
-                shrinkWrap: true,
+                shrinkWrap: true, // show size according to the content
                 itemCount: history.length,
                 itemBuilder: (context, index) {
                   return ListTile(

@@ -1,5 +1,7 @@
 # water_tracker_appp
 
+2 flies: 1. water_tracker, 2.button
+
 = new learned topics
 
    1.   ElevatedButton.icon(
@@ -19,3 +21,12 @@
         If value is less than min, it returns min.
         If value is greater than max, it returns max.
         Otherwise, it returns value itself.
+
+
+# Expense_tracker_appp
+
+        1. create new expense.
+        2. update expense
+        3. show progressBar
+        4. basic calculation 
+        5. delete expense
